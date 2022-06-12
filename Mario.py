@@ -5,6 +5,7 @@ from collections import deque
 
 from MarioNet import MarioNet
 
+
 # 对 state tensor 化
 def state_preprocess(state):
     state = state.__array__()
@@ -22,29 +23,29 @@ class Mario:
 
         self.net = MarioNet(self.state_dim, self.action_dim).float()
 
-        self.exp_rate = 1
-        self.exp_rate_decay = 0.99999975
-        self.min_exp_rate = 0.1
-        self.curr_step = 0
+        # Epsilon Greedy 的几个参数
+        self.exp_rate = 1  # Epsilon: 初值为 1
+        self.exp_rate_decay = 0.99999975  # 每次减少的一个 rate
+        self.min_exp_rate = 0.1  # epsilon 当递减到 0.1 的时候不再递减
 
-        self.memory = deque(maxlen=5000)  # 由于设备限制，Memory Buffer
-        self.batch_size = 32
+        self.curr_step = 0  # 记录下当前的 step
 
-        self.gamma = 0.9
+        self.memory = deque(maxlen=5000)  # 由于设备限制，Memory Buffer 不能开得很大
+        self.batch_size = 32  # 每次喂给模型的 batch 数量
+
+        self.gamma = 0.9  # 对应 return function 的 gamma, 一个衰减函数
 
         self.optimizer = torch.optim.Adam(self.net.parameters(), lr=0.00025)
-        self.loss_fn = torch.nn.SmoothL1Loss()
+        self.loss_fn = torch.nn.SmoothL1Loss()  # 在 Reinforcement Learning 中, 常用 Smooth L1 Loss 作为 loss function
 
-        self.burnin = 1e4  # min. experiences before training
-        self.learn_every = 3  # no. of experiences between updates to Q_online
-        self.sync_every = 1e4  # no. of experiences between Q_target & Q_online sync
+        self.sync_every = 1e4  # Q_target 同步参数的 episode 数
 
     def act(self, state):
         # Epsilon Greedy
         if np.random.rand() < self.exp_rate:
             action_idx = np.random.randint(self.action_dim)  # 探索, 从 action space 中随机取样
         else:
-            state = state_preprocess(state) # 将当前 state 进行预处理, 以让
+            state = state_preprocess(state)  # 将当前 state 进行预处理
             action_values = self.net(state, model="online")
             action_idx = torch.argmax(action_values, axis=1).item()  # 利用, 取出当前 model 觉得最好的 action
         # 降低当前的 exploration rate
@@ -57,11 +58,9 @@ class Mario:
     def cache(self, state, next_state, action, reward, done):
         state = state_preprocess(state)
         next_state = state_preprocess(next_state)
-
         action = torch.tensor([action]).cuda()
         reward = torch.tensor([reward]).cuda()
         done = torch.tensor([done]).cuda()
-
         self.memory.append((state, next_state, action, reward, done,))
 
     # 从 Memory 中随机采样
@@ -110,7 +109,7 @@ class Mario:
 
     # 保存模型
     def save(self):
-        save_path = self.save_dir / f"mario_net_{int(self.curr_step // self.save_every)}.chkpt"
+        save_path = self.save_dir / f"mario_net.chkpt"
         torch.save(
             dict(model=self.net.state_dict(), exploration_rate=self.exp_rate),
             save_path,

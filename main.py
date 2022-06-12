@@ -55,7 +55,7 @@ for e in range(episodes):
 mario.save()  # 在 Training 的最后保存模型
 # %% Testing Model
 
-load_path = './models/mario_net_2.chkpt'
+load_path = './models/mario_net.chkpt'
 checkpoint = torch.load(load_path)
 network = MarioNet(input_dim=(4, 84, 84), output_dim=env.action_space.n)
 network.load_state_dict(checkpoint['model'])
