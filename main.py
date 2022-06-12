@@ -88,3 +88,5 @@ for e in range(test_episodes):
 env.close()  # 调用 close 方法关闭 GUI
 
 print(f'{test_episodes} episodes\' mean rewards : {np.mean(rewards)}')
+
+#%%
