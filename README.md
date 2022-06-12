@@ -30,7 +30,11 @@ D:.
         50000_episodes.mp4
 ```
 
-直接运行 `main.py` 即可.
+- 如果需要运行项目, 运行 `main.py` 即可.
+- `Mario.py`: Agent 相关文件.
+- `MarioNet.py`: 网络定义.
+- `Metric.py`: Logger.
+- `Wrappers.py`: 包装 Environment 的类.
 
 ## 待改进
 
