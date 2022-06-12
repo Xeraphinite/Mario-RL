@@ -30,7 +30,11 @@ D:.
         50000_episodes.mp4
 ```
 
-直接运行 `main.py` 即可.
+- 如果需要运行项目, 运行 `main.py` 即可.
+- `Mario.py`: Agent 相关文件.
+- `MarioNet.py`: 网络定义.
+- `Metric.py`: Logger.
+- `Wrappers.py`: 包装 Environment 的类.
 
 ## 待改进
 
@@ -60,14 +64,13 @@ D:.
 
 ## 参考资料
 
-1. [Easy RL - 强化学习教程]: https://datawhalechina.github.io/easy-rl/#/	"Easy RL - 强化学习教程"
+1. [Easy RL - 强化学习教程](https://datawhalechina.github.io/easy-rl/#/)
 
-2. [Shusen Wang - 深度强化学习]: https://github.com/wangshusen/DeepLearning "Shusen Wang - 深度强化学习"
+2. [Shusen Wang - 深度强化学习](https://github.com/wangshusen/DeepLearning)
 
-3. [深度强化学习落地指南]:https://www.zhihu.com/column/c_1186982555915599872   "深度强化学习落地指南"
-
+3. [深度强化学习落地指南](https://www.zhihu.com/column/c_1186982555915599872)
 
 
 ## 代码参考
 
-1. [PyTorch - Training a Mario-playing RL Agent]: https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html
+1. [PyTorch - Training a Mario-playing RL Agent]( https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
