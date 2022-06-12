@@ -60,12 +60,11 @@ D:.
 
 ## 参考资料
 
-1. [Easy RL - 强化学习教程]: https://datawhalechina.github.io/easy-rl/#/	"Easy RL - 强化学习教程"
+1. [Easy RL - 强化学习教程]: https://datawhalechina.github.io/easy-rl/#/
 
-2. [Shusen Wang - 深度强化学习]: https://github.com/wangshusen/DeepLearning "Shusen Wang - 深度强化学习"
+2. [Shusen Wang - 深度强化学习]: https://github.com/wangshusen/DeepLearning
 
-3. [深度强化学习落地指南]:https://www.zhihu.com/column/c_1186982555915599872   "深度强化学习落地指南"
-
+3. [深度强化学习落地指南]:https://www.zhihu.com/column/c_1186982555915599872
 
 
 ## 代码参考
