@@ -1,8 +1,6 @@
 # Mario-RL
 ## 项目简介
 
-GDUFE - 大三下 - IT 技术创新实践课程项目
-
 使用 **Double-DQN** 进行强化学习训练.
 
 由于本人水平有限，希望大家不吝赐教！
@@ -70,7 +68,3 @@ D:.
 
 3. [深度强化学习落地指南](https://www.zhihu.com/column/c_1186982555915599872)
 
-
-## 代码参考
-
-1. [PyTorch - Training a Mario-playing RL Agent]( https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
